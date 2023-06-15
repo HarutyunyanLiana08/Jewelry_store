@@ -5,7 +5,7 @@ import {Link } from 'react-router-dom'
 
 
 
-function Header() {
+function Header({count}) {
     return(  
         <header className="App-header">
             <div className="navBar">
@@ -28,14 +28,14 @@ function Header() {
   <Link to="/register" className="button button-black">
     <button>Sign up</button>     
   </Link>
-
-                        
+           
                     </div>
                     <div className="navBarRightBasket">
                         <Link to="/basket">
                             <img src={basket} className="basketImage" alt="basket"/>
                         </Link>
                         <div className="basketProductsQuantity">
+                        <span>{count}</span>
                             {/* {quantity} */}
                         </div>
                     </div>
