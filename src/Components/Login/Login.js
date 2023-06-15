@@ -27,11 +27,12 @@ const Login = () => {
 
       // Handle response from the backend
       if (response.ok) {
-        // Login successful
-        console.log('Login successful');
+       localStorage.setItem('token', data.token)
+    
+        alert(data.message);
       } else {
         // Login failed
-        console.log('Login failed:', data.error);
+        alert(data.message);
       }
     } catch (error) {
       console.error('Error:', error);

@@ -30,10 +30,10 @@ const Register = () => {
       // Handle response from the backend
       if (response.ok) {
         // Registration successful
-        console.log('Registration successful');
+       alert(data.message);
       } else {
         // Registration failed
-        console.log('Registration failed:', data.error);
+        alert(data.error);
       }
     } catch (error) {
       console.error('Error:', error);
