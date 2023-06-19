@@ -1,12 +1,21 @@
  .App-header{
     background-color: #efefef;
+    
 }
-
+header{
+  position:sticky
+}
 .navBar {
     display: flex;
     justify-content: space-between;
+    
 }
-
+.about{
+  width:500px;
+  margin:0 auto;
+  line-height: 35px;
+  padding: 50px;
+}
 .navBarLeft {
     display: flex;
     align-items: center;
@@ -20,7 +29,7 @@
 }
 
 .brandLogo {
-    height: 120px;
+    height: 100px;
 }
 
 .navBarLeftItems{
@@ -61,7 +70,7 @@
 .navBarRightBasket {
     display: flex;
     align-items: center;
-    margin: 0px 5px 0px 5px;
+    /* margin: 0px 5px 0px 5px; */
 }
 /* Header.css */
 
@@ -96,7 +105,7 @@
   }
   
 .basketImage {
-    height: 50px;
+    height: 35px;
     padding-right: 30px;
 }
 
@@ -107,8 +116,8 @@
     background-color: white;
     border-radius: 20px;
     border: 2px solid #353069;
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,4 +126,9 @@
     left: -50px;
 } 
 
-  
+/* .image {
+    width: 1000%;
+    max-width: 100px; /* Adjust the value to your desired width */
+    /* height: auto;
+    margin-top: 20px;
+  } */ 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
+import { decodeToken } from "react-jwt";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,8 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,17 +29,26 @@ const Login = () => {
 
       const data = await response.json();
 
-      // Handle response from the backend
       if (response.ok) {
-       localStorage.setItem('token', data.token)
-    
-        alert(data.message);
+        localStorage.setItem('token', data.token);
+        console.log(data.message);
       } else {
-        // Login failed
-        alert(data.message);
+        console.error(data.message);
+      }
+
+      const token = localStorage.getItem('token');
+      const decodedToken = decodeToken(token);
+
+      if (decodedToken.role === 1) {
+        navigate('/admin');
       }
     } catch (error) {
       console.error('Error:', error);
+    }
+    const token = localStorage.getItem('token');
+    const decodedToken = decodeToken(token);
+    if (decodedToken.role === 0){
+      navigate('/')
     }
   };
 

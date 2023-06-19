@@ -1,7 +1,8 @@
 import './Header.css';
 import logo from './Images/logo.jpg'
 import basket from './Images/basket.png';
-import {Link } from 'react-router-dom'
+import {Link } from 'react-router-dom';
+// import jew from './Images/jew.png'
 
 
 
@@ -39,8 +40,14 @@ function Header({count}) {
                             {/* {quantity} */}
                         </div>
                     </div>
+                 
                 </div>
             </div>
+            <div className="image">
+            {/* <img src = {jew} className='image' alt='img' /> */}
+            </div>
+            
+
         </header>
     )
 };

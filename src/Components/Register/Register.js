@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Register.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,7 +32,7 @@ const Register = () => {
       // Handle response from the backend
       if (response.ok) {
         // Registration successful
-       alert(data.message);
+       navigate ('/');
       } else {
         // Registration failed
         alert(data.error);

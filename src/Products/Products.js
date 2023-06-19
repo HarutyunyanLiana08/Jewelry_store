@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom"
 import './Products.css'
 import {useEffect,useState} from 'react'
@@ -12,8 +11,6 @@ useEffect(()=>{
  
 },[])
  
- console.log(jewelry)
-
   return (
 
     <div className="container">

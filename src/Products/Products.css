@@ -12,9 +12,12 @@
   
   .image {
     width: 100%;
-    height: auto;
+    height:55%;
   }
-  
+  .image:hover{
+    transform: scale(1.2);
+    box-shadow: 2px 2px 4px rgba(0.5, 0.5, 0.5, 5);
+  }
   .name {
     margin-top: 10px;
   }
@@ -27,13 +30,13 @@
   button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    background-color:grey;
+    color: rgb(12, 10, 10);
     border: none;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: white
   }
   

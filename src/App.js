@@ -6,6 +6,11 @@ import Login from './Components/Login/Login';
 import Products from './Products/Products';
 import ProductID from './Products/ProductID';
 import Footer from './Footer/Footer';
+import AdminPage from './Components/Login/AdminPage';
+import ProtectedRoute from './Routes/ProtectedRoute';
+import About from './Header/About'
+
+
 
 function App() {
   const [count,setCount]=useState(0)
@@ -19,6 +24,8 @@ function App() {
             <Route path='/product/:id' element={<ProductID handleClick={handleClick}/>} />
             <Route path='/register' element={<Register />}/>
             <Route path='/login' element={<Login />}/>
+            <Route path='/about' element={< About/>}/>
+            <Route path='/admin' element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
             {/* <Route path='/loggedin/admin' element={<LoggedInAdmin />}/>
             <Route path='/loggedin/user' element={<LoggedInUser />}/> */}
 
