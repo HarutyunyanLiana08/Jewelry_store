@@ -2,7 +2,7 @@
 
 ## Description
 
-This e-commerce frontend project is designed specifically for a jewelry store. It includes seamless authorization and authentication, user login and registration, as well as  admin panel with easy-to-use CRUD functionality for managing store's products and categories.
+This is an e-commerce frontend project is designed specifically for a jewelry store. It includes seamless authorization and authentication, user login and registration, as well as  admin panel with easy-to-use CRUD functionality for managing store's products and categories.
 
 
 ## Features

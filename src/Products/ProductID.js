@@ -12,7 +12,7 @@ export default function ProductID({handleClick}) {
   },[])
   return (
     <div className="more_info">
-      <img src={jewelry.image} alt="" className="images" />
+      <img src={`http://localhost:5000/${jewelry.image}`} alt="" className="images" />
       <div className="info">
         <h2>{jewelry.name}</h2>
         <p className="des">{jewelry.description}</p>
