@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# Frontend e-commerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This e-commerce frontend project is designed specifically for a jewelry store. It includes seamless authorization and authentication, user login and registration, as well as  admin panel with easy-to-use CRUD functionality for managing store's products and categories.
 
-In the project directory, you can run:
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* User registration and login
+* Authentication via JWT
+* Product cart
+* Admin panel
+* Design CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Installing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+https://github.com/HarutyunyanLiana08/Jewelry_store
+cd .. Jewelry store
+npm install
+```
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To test the application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* default request port http://localhost:3000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+Start the application
+    npm start
+```
+# Backend e-commerce
 
-### `npm run eject`
+## Description
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This e-commerce backend aplication project is ready for most basic core tasks like authorization, authentication, email verification and CRUD.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* User registration and login
+* Authentication via JWT
+* Email confirmation
+* CRUD for products
+* MySql database
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Installing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+git clone https://github.com/HarutyunyanLiana08/backend_mysql_sequelize_cli.git
+cd ..  backend_mysql_sequelize_cli
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
+To test the application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Create MySql database and choose a username and password for it
+* Create config.json file and add the database data as in the example
+```
+    {
+    "development": {
+        "username": "username",
+        "password": "password",
+        "database": "database name",
+        "host": "host",
+        "port": "port",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "username",
+        "password": "password",
+        "database": "database name",
+        "host": "host",
+        "port": "port",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "username",
+        "password": "password",
+        "database": "database name",
+        "host": "host",
+        "port": "port",
+        "dialect": "mysql"
+    }
+    }
+```
 
-### Analyzing the Bundle Size
+* Create .env file and add 
+    * PORT = port(the port on which you want to send a request)
+    * T_SECRET = secret(the password with which the token will be issued)
+    * EMAIL = email(the email from which you want to send a code for verification)
+    * EMAIL_PASSWORD = password (Enable 2 factor authentication and click on app passwords (gmail example: https://support.google.com/mail/answer/185833?hl=en))
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+Create the database tables
+    npx sequelize-cli db:migrate
 
-### Making a Progressive Web App
+Start the application
+    npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Authors
 
-### Advanced Configuration
+Contributors names and contact info
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ex. Liana Harutyunyan
+ex. https://github.com/HarutyunyanLiana08
