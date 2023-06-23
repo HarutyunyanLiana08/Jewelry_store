@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
-import {useEffect,useState} from 'react'
+import {useEffect,useState} from 'react';
+import './ProductID.css';
+
 
 export default function ProductID({handleClick}) {
   const { id } = useParams();

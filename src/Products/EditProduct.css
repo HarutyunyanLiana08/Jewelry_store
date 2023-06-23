@@ -1,0 +1,25 @@
+.edit-product-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .edit-product-form input,
+  .edit-product-form select {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 300px;
+  }
+  
+  .update-button,
+  .back-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  

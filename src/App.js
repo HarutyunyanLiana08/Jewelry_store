@@ -9,6 +9,10 @@ import Footer from './Footer/Footer';
 import AdminPage from './Components/Login/AdminPage';
 import ProtectedRoute from './Routes/ProtectedRoute';
 import About from './Header/About'
+import AllProducts from './Products/AllProducts'
+import CreateProduct from './Products/CreateProduct';
+import EditProduct from './Products/EditProduct';
+import DeleteProduct from './Products/DeleteProduct';
 
 
 
@@ -26,8 +30,10 @@ function App() {
             <Route path='/login' element={<Login />}/>
             <Route path='/about' element={< About/>}/>
             <Route path='/admin' element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
-            {/* <Route path='/loggedin/admin' element={<LoggedInAdmin />}/>
-            <Route path='/loggedin/user' element={<LoggedInUser />}/> */}
+            <Route path='/products' element={<AllProducts />} />
+            <Route path = '/createproduct'  element={<CreateProduct />} />
+            <Route path = '/updateproduct/:id' element ={<EditProduct />} />
+            <Route path='/deleteproduct/:id' element = {<DeleteProduct/>} />
 
   </Routes>
 
