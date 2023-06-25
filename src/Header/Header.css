@@ -47,11 +47,7 @@ header{
 }
 
 .link:hover{
-    /* background-color: #efefef;
-    color: #3f39ab;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px 2px #3f39ab; */   
-     transform: scale(1.2); 
+     transform: scale(1.2)
 }
 
 .navBarRight {
@@ -134,10 +130,3 @@ header{
     top: -20px;
     left: -50px;
 } 
-
-/* .image {
-    width: 1000%;
-    max-width: 100px; /* Adjust the value to your desired width */
-    /* height: auto;
-    margin-top: 20px;
-  } */ 

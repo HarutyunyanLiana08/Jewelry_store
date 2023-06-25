@@ -12,10 +12,9 @@ import About from './Header/About'
 import AllProducts from './Products/AllProducts'
 import CreateProduct from './Products/CreateProduct';
 import EditProduct from './Products/EditProduct';
-import DeleteProduct from './Products/DeleteProduct';
 import Contact from './Header/Contact'
-
-
+import Categories from './Products/Categories';
+import CreateCategory from './Products/CreateCategory';
 
 function App() {
   const [count,setCount]=useState(0)
@@ -33,9 +32,10 @@ function App() {
             <Route path='/contact' element={< Contact/>}/>
             <Route path='/admin' element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
             <Route path='/products' element={<AllProducts />} />
-            <Route path = '/createproduct'  element={<CreateProduct />} />
-            <Route path = '/updateproduct/:id' element ={<EditProduct />} />
-            <Route path='/deleteproduct/:id' element = {<DeleteProduct/>} />
+            <Route path = '/createproduct'  element={<ProtectedRoute><CreateProduct /></ProtectedRoute>} />
+            <Route path = '/updateproduct/:id' element ={<ProtectedRoute><EditProduct /></ProtectedRoute>} />
+            <Route path= '/categories' element = {<ProtectedRoute><Categories/></ProtectedRoute>} />
+            <Route path = '/createcategory' element = {<ProtectedRoute><CreateCategory /></ProtectedRoute>} />
 
   </Routes>
 

@@ -1,156 +1,195 @@
-import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import './EditProduct.css'
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function EditProduct() {
+
+function EditProduct() {
+  const [categories, setCategories] = useState([]);
+  const [product, setProduct] = useState({});
+  const [image, setImage] = useState([]);
+  const [updated, setUpdated] = useState("");
+  const [err, setErr] = useState("");
+  const [emptyErr, setEmptyErr] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState({});
-  const [image, setImage] = useState(null);
-  const [err, setErr] = useState('');
 
-  const submitUpdateProducts = (id) => async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem('token');
-    try {
-      const formData = new FormData();
-      // formData.append('name', products.name);
-      // formData.append('image', image);
-      // console.log(formData)
-      formData.append('name', products.name);
-      formData.append('categoryId', products.categoryId);
-      formData.append('price', products.price);
-      formData.append('description', products.description);
-      formData.append('quantity', products.quantity);
-      formData.append('image', image);
-
-      const response = await fetch(`http://localhost:5000/updateproduct/${id}`, {
-        method: 'PUT',
-        body: formData,
-        headers: {
-          Authorization: token,
-        },
+  useEffect(() => {
+    fetch(`http://localhost:5000/product/${id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setProduct(res);
       });
+  }, [id]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/allcategories")
+      .then((res) => res.json())
+      .then((res) => {
+        setCategories(res);
+      });
+  }, []);
+
+  const updateProduct = async (id) => {
+    const token = localStorage.getItem('token');
+    if (
+      product.name === "" ||
+      product.categoryId === "" ||
+      product.price === "" ||
+      product.description === "" ||
+      product.quantity === ""
+    ) {
+      setEmptyErr("Fill all fields");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("name", product?.name);
+    formData.append("price", product?.price);
+    formData.append("description", product?.description);
+    formData.append("quantity", product?.quantity);
+    formData.append("categoryId", product?.categoryId);
+    formData.append("image", image);
+    
+    try {
+      const response = await fetch(
+        `http://localhost:5000/updateproduct/${id}`,
+        {
+          method: "PUT",
+          body: formData,
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
       if (!response.ok) {
-        setErr('Not Found');
+        setUpdated("");
+        setErr("Not Found");
+      } else {
+        setEmptyErr("");
+        setUpdated("Product Updated");
+        navigate("/products");
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    fetch('http://localhost:5000/allcategories')
-      .then((res) => res.json())
-      .then((data) => setCategories(data));
-  }, []);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProducts(data);
-      });
-  }, [id]);
-
   return (
     <div>
-      {products && products.name !== undefined ? (
+      <h2 style={{ textAlign: "center", marginTop: "15px" }}>Edit Product</h2>
+      <p style={{ height: "10px", textAlign: "center", fontSize: "15px" }}>
+        {err ? err : updated}
+      </p>
+      {product.name !== undefined ? (
         <form
-          className="edit-product-form"
-          noValidate
-          autoComplete="off"
+          style={{
+            marginTop: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+          onSubmit={(e) => e.preventDefault()}
         >
           <input
             type="text"
-            id="name"
-            required
             placeholder="Name"
-            value={products?.name}
+            value={product.name}
             onChange={(e) =>
-              setProducts((prevState) => ({
+              setProduct((prevState) => ({
                 ...prevState,
                 name: e.target.value,
               }))
             }
+            style={{ margin: "8px", width: "41ch", padding: "8px" }}
           />
-          <input
-            type="text"
-            id="price"
-            required
-            placeholder="Price"
-            value={products?.price}
-            onChange={(e) =>
-              setProducts((prevState) => ({
-                ...prevState,
-                price: e.target.value,
-              }))
-            }
-          />
-          <input
-            type="text"
-            id="description"
-            required
-            placeholder="description"
-            value={products?.description}
-            onChange={(e) =>
-              setProducts((prevState) => ({
-                ...prevState,
-                type: e.target.value,
-              }))
-            }
-          />
-          <input
-            type="text"
-            id="quantity"
-            required
-            placeholder="Quantity"
-            value={products?.quantity}
-            onChange={(e) =>
-              setProducts((prevState) => ({
-                ...prevState,
-                quantity: e.target.value,
-              }))
-            }
-          />
-        
+
           <input
             type="file"
-            id = "image"
+            id="image"
+            multiple
             onChange={(e) => setImage(e.target.files[0])}
+            style={{ margin: "8px", padding: "8px", width: "41ch" }}
           />
+
           <select
-            id="category"
-            required
-            value={products?.category_id}
+            value={product.categoryId}
             onChange={(e) =>
-              setProducts((prevState) => ({
+              setProduct((prevState) => ({
                 ...prevState,
-                category_id: e.target.value,
+                categoryId: e.target.value,
               }))
             }
+            style={{ margin: "8px", padding: "8px", width: "41ch" }}
           >
-            <option value="" disabled>
-              Select Category
-            </option>
+            <option value="">Select Category</option>
             {categories.map((category) => (
               <option value={category.id} key={category.id}>
                 {category.name}
               </option>
             ))}
           </select>
-          <button className="update-button" onClick={submitUpdateProducts(id)}>
+
+          <input
+            type="text"
+            placeholder="Price"
+            value={product.price}
+            onChange={(e) =>
+              setProduct((prevState) => ({
+                ...prevState,
+                price: e.target.value,
+              }))
+            }
+            style={{ margin: "8px", width: "41ch", padding: "8px" }}
+          />
+
+          <input
+            type="text"
+            placeholder="Description"
+            value={product.description}
+            onChange={(e) =>
+              setProduct((prevState) => ({
+                ...prevState,
+                description: e.target.value,
+              }))
+            }
+            style={{ margin: "8px", width: "41ch", padding: "8px" }}
+          />
+
+          <input
+            type="text"
+            placeholder="Quantity"
+            value={product.quantity}
+            onChange={(e) =>
+              setProduct((prevState) => ({
+                ...prevState,
+                quantity: e.target.value,
+              }))
+            }
+            style={{ margin: "8px", width: "41ch", padding: "8px" }}
+          />
+
+          <p style={{ color: "red", height: "10px", textAlign: "center", fontSize: "15px" }}>
+            {emptyErr ? emptyErr : ""}
+          </p>
+
+          <button
+            onClick={() => updateProduct(id)}
+            style={{
+              margin: "8px",
+              padding: "8px 16px",
+              border: "1px solid #ccc",
+              backgroundColor: "#fff",
+              cursor: "pointer",
+              color: "black"
+            }}
+          >
             Update
           </button>
-          <p className="error-message">{err ? err : null}</p>
-          <button className="back-button" onClick={() => navigate('/products')}>
-            Back
-          </button>
         </form>
-      ) : null}
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
+
+export default EditProduct;

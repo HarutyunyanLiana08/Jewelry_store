@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { RiEdit2Line, RiDeleteBinLine } from 'react-icons/ri';
-import './AllProducts.css'
+import './AllProducts.css';
 
 export default function AllProducts() {
   const [products, setProducts] = useState([]);
+  const [isDel, setIsDel] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,13 +14,39 @@ export default function AllProducts() {
       .then((data) => setProducts(data));
   }, []);
 
+  const deleteProduct = async (id) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(
+        `http://localhost:5000/deleteproduct/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            Authorization: token,
+          },
+        }
+      );
+      if (!response.ok) {
+        navigate('/');
+      }
+      setIsDel(!isDel);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
-<div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
-<button className="new-product-button" style={{ border: 'none', background: 'none', textDecoration: 'none' }}>
-  <Link to="/createproduct" style={{ textDecoration: 'none' }}>New Product</Link>
-</button>
-</div>
+      <div
+        style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}
+      >
+        <button className="new-product-button">
+          <Link to="/createproduct" style={{ textDecoration: 'none', color: 'black' }}>
+            New Product
+          </Link>
+        </button>
+      </div>
       <table className="product-table">
         <thead>
           <tr>
@@ -39,7 +66,6 @@ export default function AllProducts() {
               <td>{product.description}</td>
               <td>{product.quantity}</td>
               <td>{product.categoryId}</td>
-            
               <td>
                 <img
                   src={`http://localhost:5000/${product.image}`}
@@ -50,10 +76,10 @@ export default function AllProducts() {
               <td>
                 <Link to={`/updateproduct/${product.id}`}>
                   <RiEdit2Line />
-                </Link></td>
-                <td className='product-table'>
-                  <RiDeleteBinLine />
-                
+                </Link>
+              </td>
+              <td className="product-table">
+                <RiDeleteBinLine onClick={() => deleteProduct(product.id)} />
               </td>
             </tr>
           ))}

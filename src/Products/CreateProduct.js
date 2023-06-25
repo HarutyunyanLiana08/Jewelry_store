@@ -107,9 +107,9 @@ export default function CreateProduct() {
           // accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
         />
-        <button type="submit">Create</button>
+        <button type="submit" style={{color:'black'}}>Create</button>
         {err && <p className="error-message">{err}</p>}
-        <button onClick={() => navigate('/products')}>Back</button>
+        <button onClick={() => navigate('/products')} style={{color:'black'}}>Back</button>
       </form>
     </div>
   );

@@ -5,7 +5,6 @@ import './ProductID.css';
 
 export default function ProductID({handleClick}) {
   const { id } = useParams();
-  // const product = data[id]
   const [jewelry,setJewelry] = useState([]);
   useEffect(()=>{
     fetch("http://localhost:5000/product/"+id)
