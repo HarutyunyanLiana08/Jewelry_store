@@ -5,7 +5,7 @@ import { decodeToken } from "react-jwt";
 const ProtectedRoute = ({children})=>{
     const token =localStorage.getItem('token')
     const decodedToken = decodeToken(token);
-    if(!token || decodedToken?.role === 'user'){
+    if(!token || decodedToken?.role === 0){
         return <Navigate to='/' />
     }
     return children

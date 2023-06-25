@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 50px;
   }
   
   .images {
@@ -23,6 +24,7 @@
   
   .des {
     margin-bottom: 10px;
+    width: 500px
   }
   
   h3 {
@@ -31,16 +33,5 @@
     margin-bottom: 10px;
   }
   
-  /* button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  } */
+ 
   

@@ -15,18 +15,18 @@ export default function AllProducts() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
-        <button>
-          <Link to="/createproduct">New Product</Link>
-        </button>
-      </div>
+<div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
+<button className="new-product-button" style={{ border: 'none', background: 'none', textDecoration: 'none' }}>
+  <Link to="/createproduct" style={{ textDecoration: 'none' }}>New Product</Link>
+</button>
+</div>
       <table className="product-table">
         <thead>
           <tr>
             <th>Name</th>
             <th>Price</th>
             <th>Description</th>
-            {/* <th>Quantity</th> */}
+            <th>Quantity</th>
             <th>CategoryId</th>
             <th>Image</th>
           </tr>
@@ -37,23 +37,23 @@ export default function AllProducts() {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>{product.description}</td>
-              {/* <td>{product.quantity}</td> */}
+              <td>{product.quantity}</td>
               <td>{product.categoryId}</td>
             
               <td>
                 <img
                   src={`http://localhost:5000/${product.image}`}
                   alt="Product"
-                  style={{ width: '100px', height: '100px' }}
+                  style={{ width: '50px', height: '50px' }}
                 />
               </td>
               <td>
                 <Link to={`/updateproduct/${product.id}`}>
                   <RiEdit2Line />
-                </Link>
-                <Link to={`/deleteproduct/${product.id}`}>
+                </Link></td>
+                <td className='product-table'>
                   <RiDeleteBinLine />
-                </Link>
+                
               </td>
             </tr>
           ))}

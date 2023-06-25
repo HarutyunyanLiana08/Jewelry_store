@@ -13,7 +13,7 @@ export default function CreateProduct() {
   const [err, setErr] = useState('');
   const[categories, setAllCategories] = useState([])
 
-  async function submitCreateProduct(e) {
+  const submitCreateProduct = async(e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     const formData = new FormData();
@@ -22,10 +22,10 @@ export default function CreateProduct() {
     formData.append('price', price);
     formData.append('description', description);
     formData.append('quantity', quantity);
-    if (image) {
-      formData.append('img', image);
+    formData.append('image', image);
 
-    }
+    
+    console.log(image)
     try {
       const response = await fetch('http://localhost:5000/createproduct', {
         method: 'POST',
@@ -56,7 +56,7 @@ export default function CreateProduct() {
 
   return (
     <div>
-      <form className="create-product-form" onSubmit={submitCreateProduct} noValidate autoComplete="off">
+      <form className="create-product-form" onSubmit={submitCreateProduct}>
         <input
           type="text"
           id="name"
@@ -103,8 +103,8 @@ export default function CreateProduct() {
         </select>
          <input
           type="file"
-          name="img"
-          accept="image/*"
+          id="image"
+          // accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
         />
         <button type="submit">Create</button>

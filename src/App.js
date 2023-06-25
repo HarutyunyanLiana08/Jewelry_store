@@ -13,6 +13,7 @@ import AllProducts from './Products/AllProducts'
 import CreateProduct from './Products/CreateProduct';
 import EditProduct from './Products/EditProduct';
 import DeleteProduct from './Products/DeleteProduct';
+import Contact from './Header/Contact'
 
 
 
@@ -29,6 +30,7 @@ function App() {
             <Route path='/register' element={<Register />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/about' element={< About/>}/>
+            <Route path='/contact' element={< Contact/>}/>
             <Route path='/admin' element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
             <Route path='/products' element={<AllProducts />} />
             <Route path = '/createproduct'  element={<CreateProduct />} />

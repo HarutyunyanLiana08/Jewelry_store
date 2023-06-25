@@ -28,13 +28,10 @@ const Register = () => {
       });
 
       const data = await response.json();
-
-      // Handle response from the backend
       if (response.ok) {
-        // Registration successful
        navigate ('/');
       } else {
-        // Registration failed
+        
         alert(data.error);
       }
     } catch (error) {

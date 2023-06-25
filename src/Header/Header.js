@@ -2,7 +2,6 @@ import './Header.css';
 import logo from './Images/logo.jpg'
 import basket from './Images/basket.png';
 import {Link } from 'react-router-dom';
-// import jew from './Images/jew.png'
 
 
 
@@ -16,7 +15,7 @@ function Header({count}) {
                     </div>
                     <div className="navBarLeftItems">
                         <Link to="/" className="link">Home</Link>
-                        <Link to="/products" className="link">Shop</Link>
+                        <Link to="/" className="link">Shop</Link>
                         <Link to="/about" className="link">About</Link>
                         <Link to="/contact" className="link">Contact</Link> 
                     </div>
@@ -37,14 +36,14 @@ function Header({count}) {
                         </Link>
                         <div className="basketProductsQuantity">
                         <span>{count}</span>
-                            {/* {quantity} */}
+                            
                         </div>
                     </div>
                  
                 </div>
             </div>
             <div className="image">
-            {/* <img src = {jew} className='image' alt='img' /> */}
+            
             </div>
             
 

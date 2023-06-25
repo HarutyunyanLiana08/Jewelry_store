@@ -16,8 +16,15 @@ export default function EditProduct() {
     const token = localStorage.getItem('token');
     try {
       const formData = new FormData();
+      // formData.append('name', products.name);
+      // formData.append('image', image);
+      // console.log(formData)
       formData.append('name', products.name);
-      formData.append('img', image);
+      formData.append('categoryId', products.categoryId);
+      formData.append('price', products.price);
+      formData.append('description', products.description);
+      formData.append('quantity', products.quantity);
+      formData.append('image', image);
 
       const response = await fetch(`http://localhost:5000/updateproduct/${id}`, {
         method: 'PUT',
@@ -112,7 +119,7 @@ export default function EditProduct() {
         
           <input
             type="file"
-            accept="image/*"
+            id = "image"
             onChange={(e) => setImage(e.target.files[0])}
           />
           <select
