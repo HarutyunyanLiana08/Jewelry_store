@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CreateProduct.css'
+
 export default function CreateProduct() {
   const navigate = useNavigate();
   const [name, setName] = useState('');

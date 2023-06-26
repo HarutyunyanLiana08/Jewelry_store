@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    firstname: '',
+    lastname: '',
     email: '',
     password: ''
   });
@@ -47,8 +47,8 @@ const Register = () => {
           <input
             className="form-input"
             type="text"
-            name="firstName"
-            value={formData.firstName}
+            name="firstname"
+            value={formData.firstname}
             onChange={handleChange}
             placeholder="First Name"
           />
@@ -57,8 +57,8 @@ const Register = () => {
           <input
             className="form-input"
             type="text"
-            name="lastName"
-            value={formData.lastName}
+            name="lastname"
+            value={formData.lastname}
             onChange={handleChange}
             placeholder="Last Name"
           />
